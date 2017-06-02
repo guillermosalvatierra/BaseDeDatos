@@ -4,7 +4,8 @@ public class HerramientaGenerica{
 	
 	
 	void mostrarAtributoDeClase(Object cx){
-		Class clase = cx.getClass();
+		
+		Class<? extends Object> clase = cx.getClass();
 
 		Field[] atributos = clase.getFields();
 		
@@ -13,19 +14,18 @@ public class HerramientaGenerica{
 			String nombreAtributo = atributo.getName();
 			System.out.println("Nombre del Atributo: " + nombreAtributo);			
 		}	
-
+		
+		
 
 	}
 	
 	void mostrarTipoDeAtributoDeClase(Object cx){
-		Class clase = cx.getClass();
+		Class<? extends Object> clase = cx.getClass();
 
 		Field[] atributos = clase.getFields();
 		
 		for (Field atr: atributos){
 			Field atributo = atr;
-//			String nombreAtributo = atributo.getName();
-//			System.out.println("Nombre del Atributo: " + nombreAtributo);			
 
 			Object tipoAtributo = atributo.getType();
 			System.out.println("Tipo del Atributo: " + tipoAtributo);		
@@ -34,5 +34,30 @@ public class HerramientaGenerica{
 
 
 	}
+
+	void mostrarValorAtributoDeClase(Object cx){
+		
+		Class<? extends Object> clase = cx.getClass();
+
+		Field[] atributos = clase.getFields();
+		
+		for (Field atr: atributos){
+			Field atributo = atr;
+		
+			try {
+				Object valor = atributo.get(cx);
+				System.out.println("Valor del Atributo: " + valor.toString());			
+			} catch (IllegalArgumentException | IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			
+		}	
+		
+		
+
+	}
+	
 	
 }

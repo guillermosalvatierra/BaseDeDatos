@@ -1,9 +1,10 @@
 
 public class C2 {
-	public int variableEntero2;
+	public boolean C2variableBoolean;
 
-	public C2(int variable) {
-		this.variableEntero2 = variable;
+	public C2(boolean variable) {
+		this.C2variableBoolean = variable;
 	}
-	
+
+
 }

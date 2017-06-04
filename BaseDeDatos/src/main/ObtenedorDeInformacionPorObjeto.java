@@ -4,7 +4,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HerramientaGenerica{
+public class ObtenedorDeInformacionPorObjeto{
 	
 
 	String mostrarNombreDeClase(Object cx){

@@ -13,7 +13,7 @@ public class Main {
 	lista.add(new C1(3,4));
 	lista.add(new C2(true));
 
-	HerramientaGenerica h =new HerramientaGenerica();
+	ObtenedorDeInformacionPorObjeto h =new ObtenedorDeInformacionPorObjeto();
 	
 	for (Object c: lista){
 		System.out.println(h.mostrarNombreDeClase(c));

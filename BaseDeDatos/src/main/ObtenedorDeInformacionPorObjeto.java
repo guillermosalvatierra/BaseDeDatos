@@ -7,11 +7,10 @@ import java.util.List;
 public class ObtenedorDeInformacionPorObjeto{
 	
 
-	String mostrarNombreDeClase(Object cx){
+	public String mostrarNombreDeClase(Object cx){
 		
 		Class<? extends Object> clase = cx.getClass();
-		//System.out.println("Nombre Clase: " + clase.getName());			
-		return clase.getName();
+		return clase.getSimpleName();
 
 	}
 
@@ -27,7 +26,6 @@ public class ObtenedorDeInformacionPorObjeto{
 		for (Field atr: atributos){
 			Field atributo = atr;
 			String nombreAtributo = atributo.getName();
-//			System.out.println("Nombre del Atributo: " + nombreAtributo);			
 			LAtributos.add(nombreAtributo);
 		}	
 		
@@ -46,8 +44,7 @@ public class ObtenedorDeInformacionPorObjeto{
 			Field atributo = atr;
 
 			Object tipoAtributo = atributo.getType();
-//			System.out.println("Tipo del Atributo: " + tipoAtributo);		
-			LAtributos.add((String) tipoAtributo);
+			LAtributos.add(tipoAtributo.toString());
 
 		}	
 

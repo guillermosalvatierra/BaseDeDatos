@@ -26,6 +26,15 @@ public  class ObtenedorInformacionDeObjeto {
 		return LAtributos;
 	}
 	
+
+	public String traerNombreDeClase(Object o){
+		
+		Class<? extends Object> clase = o.getClass();
+		return clase.getSimpleName();
+
+	}
+
+	
 	private static  Map<IAtributo, InformacionDeAtributoObtenible> inicializar(){
 	
 		Map<IAtributo, InformacionDeAtributoObtenible> s = new HashMap<IAtributo, InformacionDeAtributoObtenible>();

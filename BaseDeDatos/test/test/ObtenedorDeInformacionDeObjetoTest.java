@@ -9,14 +9,16 @@ import org.junit.Test;
 
 import main.C1;
 import main.C2;
+import main.IAtributo;
 import main.ObtenedorDeInformacionPorObjetoBORRAR;
+import main.ObtenedorInformacionDeObjeto;
 
-public class ObtenedorDeInformacionPorObjetoTest {
+public class ObtenedorDeInformacionDeObjetoTest {
 
 	private C1 C1Test1=null;
 	private C2 C2Test2=null;
 
-	private ObtenedorDeInformacionPorObjetoBORRAR ObtInfo=new ObtenedorDeInformacionPorObjetoBORRAR();
+	private ObtenedorInformacionDeObjeto ObtInfo=new ObtenedorInformacionDeObjeto();
 	
 	private List<String> VariablesTest=new ArrayList<String>();
 
@@ -27,7 +29,7 @@ public class ObtenedorDeInformacionPorObjetoTest {
 		VariablesTest.add("C1variableEntero1");
 		VariablesTest.add("C1variableEntero2");
 		
-		assertEquals(VariablesTest,ObtInfo.mostrarAtributoDeClase(C1Test1));
+		assertEquals(VariablesTest,ObtInfo.traerInformacionDeAtributos(C1Test1, IAtributo.NOMBRE));
 	
 	}
 
@@ -37,7 +39,7 @@ public class ObtenedorDeInformacionPorObjetoTest {
 		
 		VariablesTest.add("C2variableBoolean");
 		
-		assertEquals(VariablesTest,ObtInfo.mostrarAtributoDeClase(C2Test2));
+		assertEquals(VariablesTest,ObtInfo.traerInformacionDeAtributos(C2Test2, IAtributo.NOMBRE));
 	
 	}
 
@@ -50,7 +52,7 @@ public class ObtenedorDeInformacionPorObjetoTest {
 		VariablesTest.add("int");
 		VariablesTest.add("int");
 		
-		assertEquals(VariablesTest,ObtInfo.mostrarTipoDeAtributoDeClase(C1Test1));
+		assertEquals(VariablesTest,ObtInfo.traerInformacionDeAtributos(C1Test1, IAtributo.TIPO));
 	
 	}
 
@@ -60,7 +62,7 @@ public class ObtenedorDeInformacionPorObjetoTest {
 		
 		VariablesTest.add("boolean");
 		
-		assertEquals(VariablesTest,ObtInfo.mostrarTipoDeAtributoDeClase(C2Test2));
+		assertEquals(VariablesTest,ObtInfo.traerInformacionDeAtributos(C2Test2, IAtributo.TIPO));
 	
 	}
 
@@ -71,7 +73,7 @@ public class ObtenedorDeInformacionPorObjetoTest {
 		VariablesTest.add("1");
 		VariablesTest.add("2");
 		
-		assertEquals(VariablesTest,ObtInfo.mostrarValorAtributoDeClase(C1Test1));
+		assertEquals(VariablesTest,ObtInfo.traerInformacionDeAtributos(C1Test1, IAtributo.VALOR));
 	
 	}
 
@@ -81,7 +83,7 @@ public class ObtenedorDeInformacionPorObjetoTest {
 		
 		VariablesTest.add("true");
 		
-		assertEquals(VariablesTest,ObtInfo.mostrarValorAtributoDeClase(C2Test2));
+		assertEquals(VariablesTest,ObtInfo.traerInformacionDeAtributos(C2Test2, IAtributo.VALOR));
 	
 	}
 
@@ -91,7 +93,7 @@ public class ObtenedorDeInformacionPorObjetoTest {
 		
 
 		
-		assertEquals("C1",ObtInfo.mostrarNombreDeClase(C1Test1));
+		assertEquals("C1",ObtInfo.traerNombreDeClase(C1Test1));
 	
 	}	
 	

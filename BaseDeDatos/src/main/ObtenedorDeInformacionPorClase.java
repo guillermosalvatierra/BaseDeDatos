@@ -17,7 +17,7 @@ public class ObtenedorDeInformacionPorClase{
 			for (Field atr: atributos){
 				Field atributo = atr;
 				String nombreAtributo = atributo.getName();
-				System.out.println("Nombre del Atributo: " + nombreAtributo);			
+				System.out.println("Nombre del Atributo de CLASE: " + nombreAtributo);			
 			}	
 
 		

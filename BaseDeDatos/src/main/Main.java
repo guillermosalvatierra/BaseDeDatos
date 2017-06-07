@@ -10,6 +10,10 @@ public class Main {
 	
 	public static void main(String[] args) {
 
+		ObtenedorDeInformacionPorClase o= new ObtenedorDeInformacionPorClase();
+		
+		o.mostrarAtributoDeClase("main.C1");
+		
 		 C1 C1Test1=new C1(1,2);
 //		 ObtenedorDeInformacionPorObjeto ObtInfo=new ObtenedorDeInformacionPorObjeto();
 //		 List<String> VariablesEnteros=new ArrayList<String>();

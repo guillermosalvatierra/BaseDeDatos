@@ -10,7 +10,14 @@ public class Main {
 	
 	public static void main(String[] args) {
 
-		ObtenedorDeInformacionPorClase o= new ObtenedorDeInformacionPorClase();
+		
+		 C1 C1Test1=new C1(1,2);		
+		 C3 C3Test3=new C3(C1Test1,true);
+
+		ObtenedorDeInformacionDeObjetoFinal obte=new ObtenedorDeInformacionDeObjetoFinal();
+		System.out.println(obte.traerInformacionDeAtributos(C3Test3).toString());
+		
+		/*ObtenedorDeInformacionPorClase o= new ObtenedorDeInformacionPorClase();
 		
 		o.mostrarAtributoDeClase("main.C1");
 		
@@ -26,7 +33,7 @@ public class Main {
 
 		List<String> traerInformacionDeAtributos = c.traerInformacionDeAtributos(C1Test1, IAtributo.NOMBRE);
 		System.out.println(traerInformacionDeAtributos);
-		
+		*/
 //		VariablesEnteros.add("int");
 //		VariablesEnteros.add("int");
 

@@ -1,8 +1,4 @@
 package main;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 
 public class Main {
@@ -19,9 +15,10 @@ public class Main {
 		 C1 C1Test1=new C1(1,2);
 		 C2 C2Test2=new C2(true);
 		 C3 C3Test3=new C3(C1Test1,true);
+		 C4 C4Test4=new C4(true,'A',107777, C1Test1);
 		 
-		ObtenedorDeInformacionDeObjetoFinal obte=new ObtenedorDeInformacionDeObjetoFinal();
-		System.out.println(obte.traerInformacionDeAtributos(C3Test3).toString());
+		ObtenedorDatos obte=new ObtenedorDatos();
+		System.out.println(obte.transformarObjetoSimpleAJson(C4Test4));
 		
 		/*ObtenedorDeInformacionPorClase o= new ObtenedorDeInformacionPorClase();
 		

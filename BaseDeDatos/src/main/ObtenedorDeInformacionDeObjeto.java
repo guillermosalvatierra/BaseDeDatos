@@ -13,7 +13,7 @@ public class ObtenedorDeInformacionDeObjeto {
 	}
 
 	
-	public Componedor traerAtributos(Object o, String pnombre, String ptipo){
+	private Componedor traerAtributos(Object o, String pnombre, String ptipo){
 
 		Componedor ComponedorRet;
 		String tipoAtributo;
@@ -64,6 +64,13 @@ public class ObtenedorDeInformacionDeObjeto {
 		}	
 		
 		return ComponedorRet;
+	}
+	
+	public String mostrarNombreDeClase(Object cx){
+		
+		Class<? extends Object> clase = cx.getClass();
+		return clase.getSimpleName();
+
 	}
 	
 }

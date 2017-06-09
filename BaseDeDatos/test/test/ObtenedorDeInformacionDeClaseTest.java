@@ -16,6 +16,10 @@ public class ObtenedorDeInformacionDeClaseTest {
 	
 	private List<String> VariablesTest=new ArrayList<String>();
 
+
+	
+	
+	
 	@Test
 	public void ValidaObjetoConDosAtributos() {
 		

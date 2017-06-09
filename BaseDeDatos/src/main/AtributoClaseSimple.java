@@ -25,6 +25,13 @@ public class AtributoClaseSimple extends Componedor {
 	    cadenaJson ='"'+ nombre+ '"';		
 		return cadenaJson;
 	}
+
+	@Override
+	protected String getValor() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 	
 

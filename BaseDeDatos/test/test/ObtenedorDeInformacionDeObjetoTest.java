@@ -10,16 +10,18 @@ import org.junit.Test;
 import Borrar.IAtributo;
 import Borrar.ObtenedorDeInformacionPorObjetoBORRAR;
 import Borrar.ObtenedorInformacionDeObjetoBORRAR;
+import main.AtributoCompuesto;
 import main.C1;
 import main.C2;
+import main.C3;
+import main.ObtenedorDeInformacionDeObjeto;
 
 public class ObtenedorDeInformacionDeObjetoTest {
 
 	private C1 C1Test1=null;
 	private C2 C2Test2=null;
-
-	private ObtenedorInformacionDeObjetoBORRAR ObtInfo=new ObtenedorInformacionDeObjetoBORRAR();
-	
+	 
+	private ObtenedorDeInformacionDeObjeto obte1=new ObtenedorDeInformacionDeObjeto();
 	private List<String> VariablesTest=new ArrayList<String>();
 
 	@Test
@@ -28,8 +30,10 @@ public class ObtenedorDeInformacionDeObjetoTest {
 		
 		VariablesTest.add("C1variableEntero1");
 		VariablesTest.add("C1variableEntero2");
+		AtributoCompuesto a=(AtributoCompuesto) obte1.traerInformacionDeAtributos(C1Test1);
 		
-		assertEquals(VariablesTest,ObtInfo.traerInformacionDeAtributos(C1Test1, IAtributo.NOMBRE));
+		
+		assertEquals(VariablesTest,a.getNombresDeAtributos());
 	
 	}
 
@@ -38,8 +42,10 @@ public class ObtenedorDeInformacionDeObjetoTest {
 		C2Test2=new C2(true);
 		
 		VariablesTest.add("C2variableBoolean");
+		AtributoCompuesto a=(AtributoCompuesto) obte1.traerInformacionDeAtributos(C2Test2);
+
 		
-		assertEquals(VariablesTest,ObtInfo.traerInformacionDeAtributos(C2Test2, IAtributo.NOMBRE));
+		assertEquals(VariablesTest,a.getNombresDeAtributos());
 	
 	}
 
@@ -51,8 +57,10 @@ public class ObtenedorDeInformacionDeObjetoTest {
 		
 		VariablesTest.add("int");
 		VariablesTest.add("int");
-		
-		assertEquals(VariablesTest,ObtInfo.traerInformacionDeAtributos(C1Test1, IAtributo.TIPO));
+
+		AtributoCompuesto a=(AtributoCompuesto) obte1.traerInformacionDeAtributos(C1Test1);
+
+		assertEquals(VariablesTest,a.getTiposDeAtributos());
 	
 	}
 
@@ -62,7 +70,9 @@ public class ObtenedorDeInformacionDeObjetoTest {
 		
 		VariablesTest.add("boolean");
 		
-		assertEquals(VariablesTest,ObtInfo.traerInformacionDeAtributos(C2Test2, IAtributo.TIPO));
+		AtributoCompuesto a=(AtributoCompuesto) obte1.traerInformacionDeAtributos(C2Test2);
+
+		assertEquals(VariablesTest,a.getTiposDeAtributos());
 	
 	}
 
@@ -73,7 +83,9 @@ public class ObtenedorDeInformacionDeObjetoTest {
 		VariablesTest.add("1");
 		VariablesTest.add("2");
 		
-		assertEquals(VariablesTest,ObtInfo.traerInformacionDeAtributos(C1Test1, IAtributo.VALOR));
+		AtributoCompuesto a=(AtributoCompuesto) obte1.traerInformacionDeAtributos(C1Test1);
+
+		assertEquals(VariablesTest,a.getValoresDeAtributos());
 	
 	}
 
@@ -83,7 +95,9 @@ public class ObtenedorDeInformacionDeObjetoTest {
 		
 		VariablesTest.add("true");
 		
-		assertEquals(VariablesTest,ObtInfo.traerInformacionDeAtributos(C2Test2, IAtributo.VALOR));
+		AtributoCompuesto a=(AtributoCompuesto) obte1.traerInformacionDeAtributos(C2Test2);
+
+		assertEquals(VariablesTest,a.getValoresDeAtributos());
 	
 	}
 
@@ -92,8 +106,8 @@ public class ObtenedorDeInformacionDeObjetoTest {
 		C1Test1=new C1(1,2);
 		
 
-		
-		assertEquals("C1",ObtInfo.traerNombreDeClase(C1Test1));
+
+		assertEquals("C1",obte1.mostrarNombreDeClase(C1Test1));
 	
 	}	
 	

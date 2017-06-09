@@ -21,13 +21,22 @@ public class AtributoSimple extends Componedor {
 		return "AtributoSimple [nombre=" + nombre + ", tipo=" + tipo + ", valor=" + valor + "]";
 	}
 	
-	
 
+
+
+	
 	protected String obtenerAtributosJSON() {
 		String cadenaJson = "";
 	    cadenaJson ='"'+ nombre+ '"'+':' +valor;		
 		return cadenaJson;
 	}
 
+
+
+	@Override
+	protected String getValor() {
+		// TODO Auto-generated method stub
+		return valor;
+	}
 	
 }

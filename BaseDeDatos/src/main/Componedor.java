@@ -8,4 +8,11 @@ public abstract class Componedor {
 	   
 	   protected abstract String obtenerAtributosJSON() ;
 	   
+
+	   protected String getNombre(){return nombre;}
+       protected String getTipo()  {return tipo;}
+
+	   protected abstract String getValor();
+
+		
 }

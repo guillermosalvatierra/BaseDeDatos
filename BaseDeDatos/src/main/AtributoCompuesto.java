@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AtributoCompuesto extends Componedor{
-	   private List<Componedor> hijo = new ArrayList<Componedor>();
+	   protected List<Componedor> hijo = new ArrayList<Componedor>();
 	   boolean esHijo=true;
 
 	  public AtributoCompuesto(String nombre, String tipo) {
@@ -23,6 +23,37 @@ public class AtributoCompuesto extends Componedor{
 		hijo.add(composicion);
 	}
 
+	public List<String> getNombresDeAtributos(){
+		List<String> ret = new ArrayList<String>();
+		for (Componedor c:hijo){
+			ret.add(c.getNombre());
+		}
+		return ret;
+	}
+	
+	public List<String> getTiposDeAtributos(){
+		List<String> ret = new ArrayList<String>();
+		for (Componedor c:hijo){
+			ret.add(c.getTipo());
+		}
+		return ret;
+	}
+
+	public List<String> getValoresDeAtributos(){
+		List<String> ret = new ArrayList<String>();
+		for (Componedor c:hijo){
+			ret.add(c.getValor());
+		}
+		return ret;
+	}
+	
+	
+	@Override
+	protected String getValor() {
+		// TODO Auto-generated method stub
+		return toString();
+	}
+	
 	
 	@Override
 	public String toString() {

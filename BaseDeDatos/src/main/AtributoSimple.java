@@ -1,8 +1,7 @@
 package main;
 
-public class AtributoSimple implements Componedor {
-	String nombre;
-	String tipo;
+public class AtributoSimple extends Componedor {
+
 	String valor;
 	
 	

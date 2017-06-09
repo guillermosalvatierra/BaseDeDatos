@@ -4,11 +4,11 @@ import java.lang.reflect.Field;
 
 public class ObtenedorDeInformacionDeObjetoFinal {
 
-	private Componedor caux;
 
 	public Componedor traerInformacionDeAtributos(Object o){
 
 //		List<String> LAtributos=new ArrayList<String>();
+		 Componedor caux;
 		
 		Class<? extends Object> clase = o.getClass();
 		
@@ -16,7 +16,7 @@ public class ObtenedorDeInformacionDeObjetoFinal {
 	
 		String tipoAtributo;
 		String nombreAtributo;
-		caux = new AtributoCompuesto();
+		caux = new AtributoCompuesto(clase.getSimpleName(),clase.getTypeName());
 		
 		for (Field atr: atributos){
 			nombreAtributo = atr.getName();

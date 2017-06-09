@@ -10,10 +10,16 @@ public class Main {
 	
 	public static void main(String[] args) {
 
-		
-		 C1 C1Test1=new C1(1,2);		
-		 C3 C3Test3=new C3(C1Test1,true);
+	/*	 C1 C1Test1=new C1(1,2);		
 
+			ObtenedorDeInformacionDeObjetoFinal obte=new ObtenedorDeInformacionDeObjetoFinal();
+			System.out.println(obte.traerInformacionDeAtributos(C1Test1).toString());
+		*/
+		
+		 C1 C1Test1=new C1(1,2);
+		 C2 C2Test2=new C2(true);
+		 C3 C3Test3=new C3(C1Test1,true);
+		 
 		ObtenedorDeInformacionDeObjetoFinal obte=new ObtenedorDeInformacionDeObjetoFinal();
 		System.out.println(obte.traerInformacionDeAtributos(C3Test3).toString());
 		

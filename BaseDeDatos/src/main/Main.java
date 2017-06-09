@@ -21,11 +21,11 @@ public class Main {
 //		System.out.println(obte.transformarAFormatoJson(C4Test4));
 		
 		
-	//	ObtenedorDeInformacionDeObjeto obte1=new ObtenedorDeInformacionDeObjeto();
-	//	System.out.println(obte1.traerInformacionDeAtributos(C3Test3).obtenerAtributosJSON());
+		ObtenedorDeInformacionDeObjeto obte1=new ObtenedorDeInformacionDeObjeto();
+		System.out.println(obte1.traerInformacionDeAtributos(C1Test1).obtenerAtributosJSON());
 		
-		ObtenedorDeInformacionDeClase obte2=new ObtenedorDeInformacionDeClase();
-		System.out.println(obte2.traerInformacionDeAtributos("main.C3").obtenerAtributosJSON());
+//		ObtenedorDeInformacionDeClase obte2=new ObtenedorDeInformacionDeClase();
+//		System.out.println(obte2.traerInformacionDeAtributos("main.C3").obtenerAtributosJSON());
 
 		
 		/*ObtenedorDeInformacionPorClase o= new ObtenedorDeInformacionPorClase();

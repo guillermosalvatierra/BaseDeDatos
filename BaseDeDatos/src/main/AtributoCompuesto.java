@@ -69,30 +69,13 @@ public class AtributoCompuesto extends Componedor{
 			
 			cadenaJson+=c.obtenerAtributosJSON();
 
-			cadenaJson=encapsularAtributoConSeparador(cadenaJson, index, hijo.size());
+			cadenaJson=UtilidadesJson.encapsularAtributoConSeparador(cadenaJson, index, hijo.size());
 			index=index+1;
 		}
 		if(esHijo)
-			cadenaJson='"'+nombre+'"'+':'+encapsularCadenaJson(cadenaJson);
+			cadenaJson='"'+nombre+'"'+':'+UtilidadesJson.encapsularCadenaJson(cadenaJson);
 		else 
-			cadenaJson=encapsularCadenaJson(cadenaJson);	
+			cadenaJson=UtilidadesJson.encapsularCadenaJson(cadenaJson);	
 		return cadenaJson;
 	}
-
-	private String encapsularCadenaJson(String cadena){
-		return "{" + cadena + "}";
-	}
-	
-	private String encapsularAtributoConSeparador(String cadena, int inicio, int fin) {
-		if (!esUltimaIteracion(inicio, fin)) {
-			cadena += ",";
-			return cadena;
-		}
-		return cadena;
-	}
-	
-	private boolean esUltimaIteracion(int inicio, int fin) {
-		return (inicio + 1) == fin;
-	}
-	
 }

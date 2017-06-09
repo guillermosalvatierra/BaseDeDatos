@@ -15,7 +15,7 @@ public class Main {
 		 C2 C2Test2=new C2(true);
 		 C3 C3Test3=new C3(C1Test1,true);
 		 
-		ObtenedorDeInformacionDeObjetoFinal obte=new ObtenedorDeInformacionDeObjetoFinal();
+		ObtenedorDeInformacionDeObjeto obte=new ObtenedorDeInformacionDeObjeto();
 		System.out.println(obte.traerInformacionDeAtributos(C3Test3).toString());
 		
 	

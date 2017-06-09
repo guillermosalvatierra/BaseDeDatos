@@ -2,7 +2,7 @@ package main;
 
 import java.lang.reflect.Field;
 
-public class ObtenedorDeInformacionDeObjetoFinal {
+public class ObtenedorDeInformacionDeObjeto {
 
 	public Componedor traerInformacionDeAtributos(Object o){
 

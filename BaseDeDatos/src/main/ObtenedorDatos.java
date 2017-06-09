@@ -3,47 +3,74 @@ package main;
 import java.lang.reflect.Field;
 
 public class ObtenedorDatos {
-	public String transformarObjetoSimpleAJson(Object o) {
+	
+	public String transformarAFormatoJson(Object objetoPadre) {
+		Class<? extends Object> clase = objetoPadre.getClass();
+		Field[] listaAtributos = clase.getFields();
+		return obtenerAtributosConcatenados(objetoPadre, listaAtributos);
+	}
 
-		Class<? extends Object> clase = o.getClass();
-		Field[] atributos = clase.getFields();
-		String tipoAtributo;
-		String nombreAtributo;
-		String cadenaJson = "{";
-
-		for (int i = 0; i < atributos.length; i++) {
-			Field atr = atributos[i];
-			nombreAtributo = atr.getName();
-			tipoAtributo = atr.getType().toString();
-			Componedor cp = null;
-			atr.setAccessible(true);
-			if (atr.getType().isPrimitive()) {
-				String sValor = "";
-				try {
-					Object valor = atr.get(o);
-					sValor = valor.toString();
-				} catch (IllegalArgumentException | IllegalAccessException e) {
-					e.printStackTrace();
-				}
-				cp = new AtributoSimpleJson(nombreAtributo, tipoAtributo, sValor);
-				if ((i+1) == atributos.length) {
-					cadenaJson += cp.toString();
-				} else {
-					cadenaJson +=  cp.toString()+ ",";
-				}
-			}
-			else{
-				try {
-					Object valor = atr.get(o);
-					Class<? extends Object> claseCompuesta = valor.getClass();
-					cadenaJson+='"' + claseCompuesta.getSimpleName() + '"'+ ":";
-					cadenaJson+=transformarObjetoSimpleAJson(valor);
-				} catch (IllegalArgumentException | IllegalAccessException e) {
-				e.printStackTrace();
-				}
+	private String obtenerAtributosConcatenados(Object objetoPadre, Field[] listaAtributos) {
+		String cadenaJson = "";
+		int cantAtributos = listaAtributos.length;
+		for (int indice = 0; indice < cantAtributos; indice++) {
+			Field atributo = listaAtributos[indice];
+			if (esAtributoPrimitivo(atributo)) {
+				String atributoPrimitivo = obtenerAtributoPrimitivo(atributo, objetoPadre);
+				cadenaJson += encapsularAtributoConSeparador(atributoPrimitivo, indice, cantAtributos);
+			} else {
+				String atributoComplejo = obtenerAtributoComplejo(atributo, objetoPadre);
+				cadenaJson += encapsularAtributoConSeparador(atributoComplejo, indice, cantAtributos);
 			}
 		}
-		cadenaJson += "}";
-		return cadenaJson;
+		return encapsularCadenaJson(cadenaJson);
+	}
+
+	private String encapsularAtributoConSeparador(String cadena, int inicio, int fin) {
+		if (!esUltimaIteracion(inicio, fin)) {
+			cadena += ",";
+			return cadena;
+		}
+		return cadena;
+	}
+	
+	private String encapsularCadenaJson(String cadena){
+		return "{" + cadena + "}";
+	}
+
+	private boolean esAtributoPrimitivo(Field atributo) {
+		return atributo.getType().isPrimitive();
+	}
+
+	private boolean esUltimaIteracion(int inicio, int fin) {
+		return (inicio + 1) == fin;
+	}
+
+	private String obtenerAtributoComplejo(Field atributo, Object objetoPadre) {
+		atributo.setAccessible(true);
+		Object valor = obtenerValorAtributo(atributo, objetoPadre);
+		Class<? extends Object> claseCompuesta = valor.getClass();
+		String cadena = '"' + claseCompuesta.getSimpleName() + '"' + ":";
+		cadena += transformarAFormatoJson(valor);
+		return cadena;
+	}
+
+	private String obtenerAtributoPrimitivo(Field atributo, Object objetoPadre) {
+		atributo.setAccessible(true);
+		Object valor = obtenerValorAtributo(atributo, objetoPadre);
+		String nombreAtributo = atributo.getName();
+		String tipoAtributo = atributo.getType().toString();
+		Componedor componedor = new AtributoSimpleJson(nombreAtributo, tipoAtributo, valor.toString());
+		return componedor.toString();
+	}
+
+	private Object obtenerValorAtributo(Field atributo, Object objetoPadre) {
+		try {
+			Object valor = atributo.get(objetoPadre);
+			return valor;
+		} catch (IllegalArgumentException | IllegalAccessException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 }

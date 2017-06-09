@@ -76,7 +76,10 @@ public class Main {
 	}
 */
 		
-	
+//		ObtenedorDeInformacionDeClase obte=new ObtenedorDeInformacionDeClase();
+//		System.out.println(obte.traerInformacionDeAtributos("main.C3"));
+		
+		
 	}	
 	
 }

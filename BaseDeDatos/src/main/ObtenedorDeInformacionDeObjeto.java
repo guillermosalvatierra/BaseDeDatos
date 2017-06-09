@@ -32,7 +32,8 @@ public class ObtenedorDeInformacionDeObjeto {
 		for (Field atr: atributos){
 
 			nombreAtributo = atr.getName();
-			tipoAtributo   = atr.getType().toString();
+//			tipoAtributo   = atr.getType().toString();
+			tipoAtributo   = atr.getType().getSimpleName();			
 			Componedor cp = null;
 			atr.setAccessible(true);			
 			
@@ -50,7 +51,7 @@ public class ObtenedorDeInformacionDeObjeto {
 			}else{
 				try {
 					Object valor = atr.get(o);
-
+//					tipoAtributo=valor.getClass().getTypeName().toString();
 			//		cp=traerInformacionDeAtributos(valor);
 					cp=traerAtributos(valor,nombreAtributo,tipoAtributo);
 

@@ -7,11 +7,11 @@ import java.util.List;
 
 import org.junit.Test;
 
+import Borrar.IAtributo;
+import Borrar.ObtenedorDeInformacionPorObjetoBORRAR;
+import Borrar.ObtenedorInformacionDeObjeto;
 import main.C1;
 import main.C2;
-import main.IAtributo;
-import main.ObtenedorDeInformacionPorObjetoBORRAR;
-import main.ObtenedorInformacionDeObjeto;
 
 public class ObtenedorDeInformacionDeObjetoTest {
 

@@ -1,4 +1,4 @@
-package main;
+package Borrar;
 
 public enum IAtributo {
 	NOMBRE,

@@ -7,9 +7,9 @@ import java.util.List;
 
 import org.junit.Test;
 
+import Borrar.ObtenedorDeInformacionPorObjetoBORRAR;
 import main.C1;
 import main.C2;
-import main.ObtenedorDeInformacionPorObjetoBORRAR;
 
 public class ObtenedorDeInformacionPorObjetoTest {
 

@@ -17,8 +17,12 @@ public class Main {
 		 C3 C3Test3=new C3(C1Test1,true);
 		 C4 C4Test4=new C4(true,'A',107777, C1Test1);
 		 
-		ObtenedorDatos obte=new ObtenedorDatos();
-		System.out.println(obte.transformarAFormatoJson(C4Test4));
+//		ObtenedorDatos obte=new ObtenedorDatos();
+//		System.out.println(obte.transformarAFormatoJson(C4Test4));
+		
+		
+		ObtenedorDeInformacionDeObjeto obte1=new ObtenedorDeInformacionDeObjeto();
+		System.out.println(obte1.traerInformacionDeAtributos(C3Test3).obtenerAtributosJSON());
 		
 		/*ObtenedorDeInformacionPorClase o= new ObtenedorDeInformacionPorClase();
 		

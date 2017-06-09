@@ -1,5 +1,7 @@
 package main;
 
+import java.lang.reflect.Field;
+
 public class AtributoSimple extends Componedor {
 
 	protected String valor;
@@ -20,5 +22,16 @@ public class AtributoSimple extends Componedor {
 	public String toString() {
 		return "AtributoSimple [nombre=" + nombre + ", tipo=" + tipo + ", valor=" + valor + "]";
 	}
+	
+	
+
+	protected String obtenerAtributosJSON() {
+		String cadenaJson = "";
+
+ 			   cadenaJson ='"'+ nombre+ '"'+':' +valor;
+		
+		return cadenaJson;
+	}
+
 	
 }

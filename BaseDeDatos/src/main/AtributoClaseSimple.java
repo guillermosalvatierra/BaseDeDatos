@@ -18,5 +18,11 @@ public class AtributoClaseSimple extends Componedor {
 	public String toString() {
 		return "AtributoSimple [nombre=" + nombre + ", tipo=" + tipo + "]";
 	}
+
+	@Override
+	protected String obtenerAtributosJSON() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

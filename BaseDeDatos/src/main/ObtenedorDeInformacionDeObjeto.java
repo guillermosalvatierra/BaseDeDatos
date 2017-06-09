@@ -5,12 +5,11 @@ import java.lang.reflect.Field;
 public class ObtenedorDeInformacionDeObjeto {
 
 	public Componedor traerInformacionDeAtributos(Object o){
-
-		
+	
 		Class<? extends Object> clase = o.getClass();
-		
-
-		return traerAtributos(o,clase.getName(),clase.getTypeName());
+		Componedor ret=traerAtributos(o,clase.getName(),clase.getTypeName());
+		((AtributoCompuesto) ret).noEsHijo();
+		return ret;
 	}
 
 	

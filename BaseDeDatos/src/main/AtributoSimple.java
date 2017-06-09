@@ -2,7 +2,7 @@ package main;
 
 public class AtributoSimple extends Componedor {
 
-	String valor;
+	protected String valor;
 	
 	
 	public AtributoSimple(String nombre, String tipo, String valor) {

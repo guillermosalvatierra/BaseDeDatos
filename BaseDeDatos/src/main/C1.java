@@ -1,8 +1,8 @@
 package main;
 
 public class C1 {
-	private int C1variableEntero1;
-	private int C1variableEntero2;
+	public int C1variableEntero1;
+	public int C1variableEntero2;
 	
 	public C1(int variable,int variable2) {
 

@@ -16,6 +16,7 @@ public class ObtenedorDatos {
 			nombreAtributo = atr.getName();
 			tipoAtributo = atr.getType().toString();
 			Componedor cp = null;
+			atr.setAccessible(true);
 			if (atr.getType().isPrimitive()) {
 				String sValor = "";
 				try {

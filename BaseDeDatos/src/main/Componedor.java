@@ -1,8 +1,9 @@
 package main;
 
 public abstract class Componedor {
-		String nombre;
-		String tipo;
-	   public abstract int getInformacion();
+		protected String nombre;
+		protected String tipo;
+
 	   public abstract void agregarHoja(Componedor composicion);
+	   
 }

@@ -10,22 +10,15 @@ public class AtributoCompuesto extends Componedor{
 			this.nombre = nombre;
 			this.tipo = tipo;
 	  }
-	@Override
-	public int getInformacion() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
-	public void agregarComponente(AtributoCompuesto ac){
-		hijo.add(ac);
-	}
-
+	  
+	  
 	@Override
 	public void agregarHoja(Componedor composicion) {
 		// TODO Auto-generated method stub
 		hijo.add(composicion);
 	}
 
+	
 	@Override
 	public String toString() {
 		return "Objeto [ nombre=" + nombre + ", tipo=" + tipo + ",atributos=" + hijo + "]";

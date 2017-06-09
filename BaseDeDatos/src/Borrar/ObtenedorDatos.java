@@ -1,6 +1,9 @@
-package main;
+package Borrar;
 
 import java.lang.reflect.Field;
+
+import main.AtributoSimpleJson;
+import main.Componedor;
 
 public class ObtenedorDatos {
 	

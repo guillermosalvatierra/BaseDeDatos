@@ -1,4 +1,4 @@
-package main;
+package Borrar;
 import java.lang.reflect.Field;
 
 public class ObtenedorDeInformacionPorClase{

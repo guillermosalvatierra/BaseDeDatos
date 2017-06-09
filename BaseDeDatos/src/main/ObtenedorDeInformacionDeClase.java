@@ -23,7 +23,6 @@ public class ObtenedorDeInformacionDeClase {
 		try {			
 			clase = Class.forName(nombreClase);
 		} catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		

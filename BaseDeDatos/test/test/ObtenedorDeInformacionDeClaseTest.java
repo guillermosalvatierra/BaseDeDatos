@@ -7,13 +7,14 @@ import java.util.List;
 
 import org.junit.Test;
 
-import Borrar.IAtributo;
-import Borrar.ObtenedorDeInformacionDeClase;
+import main.AtributoCompuesto;
+import main.ObtenedorDeInformacionDeClase;
+
 
 public class ObtenedorDeInformacionDeClaseTest {
 
 	private ObtenedorDeInformacionDeClase ClassInfo=new ObtenedorDeInformacionDeClase();
-	
+
 	private List<String> VariablesTest=new ArrayList<String>();
 
 
@@ -26,8 +27,9 @@ public class ObtenedorDeInformacionDeClaseTest {
 		VariablesTest.add("C1variableEntero1");
 		VariablesTest.add("C1variableEntero2");
 		
-		System.out.println(ClassInfo.traerInformacionDeAtributos("main.C1", IAtributo.NOMBRE));
-		assertEquals(VariablesTest,ClassInfo.traerInformacionDeAtributos("main.C1", IAtributo.NOMBRE));
+		AtributoCompuesto a=(AtributoCompuesto) ClassInfo.traerInformacionDeAtributos("main.C1");
+				
+		assertEquals(VariablesTest,a.getNombresDeAtributos());
 	
 	}
 
@@ -35,8 +37,12 @@ public class ObtenedorDeInformacionDeClaseTest {
 	public void ValidaObjetoConUnAtributo() {
 		
 		VariablesTest.add("C2variableBoolean");
+
+		AtributoCompuesto a=(AtributoCompuesto) ClassInfo.traerInformacionDeAtributos("main.C2");
+
 		
-		assertEquals(VariablesTest,ClassInfo.traerInformacionDeAtributos("main.C2", IAtributo.NOMBRE));
+		assertEquals(VariablesTest,a.getNombresDeAtributos());
+
 	
 	}
 
@@ -48,7 +54,9 @@ public class ObtenedorDeInformacionDeClaseTest {
 		VariablesTest.add("int");
 		VariablesTest.add("int");
 		
-		assertEquals(VariablesTest,ClassInfo.traerInformacionDeAtributos("main.C1", IAtributo.TIPO));
+		AtributoCompuesto a=(AtributoCompuesto) ClassInfo.traerInformacionDeAtributos("main.C1");
+
+		assertEquals(VariablesTest,a.getTiposDeAtributos());
 	
 	}
 
@@ -57,7 +65,10 @@ public class ObtenedorDeInformacionDeClaseTest {
 		
 		VariablesTest.add("boolean");
 		
-		assertEquals(VariablesTest,ClassInfo.traerInformacionDeAtributos("main.C2", IAtributo.TIPO));
+		AtributoCompuesto a=(AtributoCompuesto) ClassInfo.traerInformacionDeAtributos("main.C2");
+
+		assertEquals(VariablesTest,a.getTiposDeAtributos());
+
 	
 	}
 

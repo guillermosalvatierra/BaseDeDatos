@@ -7,9 +7,6 @@ import java.util.List;
 
 import org.junit.Test;
 
-import Borrar.IAtributo;
-import Borrar.ObtenedorDeInformacionPorObjetoBORRAR;
-import Borrar.ObtenedorInformacionDeObjetoBORRAR;
 import main.AtributoCompuesto;
 import main.C1;
 import main.C2;

@@ -7,8 +7,8 @@ import java.util.List;
 
 import org.junit.Test;
 
-import main.IAtributo;
-import main.ObtenedorDeInformacionDeClase;
+import Borrar.IAtributo;
+import Borrar.ObtenedorDeInformacionDeClase;
 
 public class ObtenedorDeInformacionDeClaseTest {
 

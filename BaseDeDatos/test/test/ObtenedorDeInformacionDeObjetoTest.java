@@ -7,18 +7,18 @@ import java.util.List;
 
 import org.junit.Test;
 
+import Borrar.IAtributo;
+import Borrar.ObtenedorDeInformacionPorObjetoBORRAR;
+import Borrar.ObtenedorInformacionDeObjetoBORRAR;
 import main.C1;
 import main.C2;
-import main.IAtributo;
-import main.ObtenedorDeInformacionPorObjetoBORRAR;
-import main.ObtenedorInformacionDeObjeto;
 
 public class ObtenedorDeInformacionDeObjetoTest {
 
 	private C1 C1Test1=null;
 	private C2 C2Test2=null;
 
-	private ObtenedorInformacionDeObjeto ObtInfo=new ObtenedorInformacionDeObjeto();
+	private ObtenedorInformacionDeObjetoBORRAR ObtInfo=new ObtenedorInformacionDeObjetoBORRAR();
 	
 	private List<String> VariablesTest=new ArrayList<String>();
 

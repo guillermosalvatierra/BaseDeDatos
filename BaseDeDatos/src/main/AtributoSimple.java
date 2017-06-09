@@ -10,11 +10,7 @@ public class AtributoSimple extends Componedor {
 		this.tipo = tipo;
 		this.valor = valor;
 	}
-	@Override
-	public int getInformacion() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 	@Override
 	public void agregarHoja(Componedor composicion) {
 	//no se usa

@@ -1,4 +1,4 @@
-package main;
+package Borrar;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public  class ObtenedorInformacionDeObjeto {
+public  class ObtenedorInformacionDeObjetoBORRAR {
 
 	private static  Map<IAtributo, InformacionDeAtributoObtenible> InfoAtributos=inicializar();
 

@@ -1,11 +1,11 @@
 package main;
 
 public class C3 {
-	public C1 c1;
-	public boolean b;
+	private C1 clase1;
+	private boolean b;
 	public C3(C1 c1, boolean b) {
 		super();
-		this.c1 = c1;
+		this.clase1 = c1;
 		this.b = b;
 	}
 	

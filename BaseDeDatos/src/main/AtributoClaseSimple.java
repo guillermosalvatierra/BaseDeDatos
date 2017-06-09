@@ -21,8 +21,11 @@ public class AtributoClaseSimple extends Componedor {
 
 	@Override
 	protected String obtenerAtributosJSON() {
-		// TODO Auto-generated method stub
-		return null;
+		String cadenaJson = "";
+	    cadenaJson ='"'+ nombre+ '"';		
+		return cadenaJson;
 	}
 	
+	
+
 }

@@ -1,6 +1,5 @@
 package main;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,11 +36,8 @@ public class AtributoCompuesto extends Componedor{
 		int index=0;
 		for (Componedor c:hijo) {
 			
-			if (c instanceof AtributoSimple ){
-				cadenaJson+=c.obtenerAtributosJSON();
-			}else{
-				cadenaJson+=c.obtenerAtributosJSON();
-			}
+			cadenaJson+=c.obtenerAtributosJSON();
+
 			cadenaJson=encapsularAtributoConSeparador(cadenaJson, index, hijo.size());
 			index=index+1;
 		}
@@ -67,37 +63,5 @@ public class AtributoCompuesto extends Componedor{
 	private boolean esUltimaIteracion(int inicio, int fin) {
 		return (inicio + 1) == fin;
 	}
-
-
-	
-	
-/*	private String obtenerAtributoComplejo(Field atributo, Object objetoPadre) {
-		atributo.setAccessible(true);
-		Object valor = obtenerValorAtributo(atributo, objetoPadre);
-		Class<? extends Object> claseCompuesta = valor.getClass();
-		String cadena = '"' + claseCompuesta.getSimpleName() + '"' + ":";
-		cadena += transformarAFormatoJson(valor);
-		return cadena;
-	}
-
-
-	
-	private String obtenerAtributosConcatenados(Object objetoPadre, Field[] listaAtributos) {
-		String cadenaJson = "";
-		int cantAtributos = listaAtributos.length;
-		for (int indice = 0; indice < cantAtributos; indice++) {
-			Field atributo = listaAtributos[indice];
-			if (esAtributoPrimitivo(atributo)) {
-				String atributoPrimitivo = obtenerAtributoPrimitivo(atributo, objetoPadre);
-				cadenaJson += encapsularAtributoConSeparador(atributoPrimitivo, indice, cantAtributos);
-			} else {
-				String atributoComplejo = obtenerAtributoComplejo(atributo, objetoPadre);
-				cadenaJson += encapsularAtributoConSeparador(atributoComplejo, indice, cantAtributos);
-			}
-		}
-		return encapsularCadenaJson(cadenaJson);
-	}
-*/
-
 	
 }

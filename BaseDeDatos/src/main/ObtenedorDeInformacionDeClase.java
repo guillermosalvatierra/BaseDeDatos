@@ -7,8 +7,9 @@ public class ObtenedorDeInformacionDeClase {
 	public Componedor traerInformacionDeAtributos(String nombreClase){
 
 		
-	
-		return traerAtributos(nombreClase,nombreClase,nombreClase);
+		Componedor ret =traerAtributos(nombreClase,nombreClase,nombreClase);
+		((AtributoCompuesto) ret).noEsHijo();
+		return ret;
 	}
 
 	

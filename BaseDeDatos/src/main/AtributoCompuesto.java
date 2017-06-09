@@ -61,7 +61,7 @@ public class AtributoCompuesto extends Componedor{
 	}
 
 
-	protected String obtenerAtributosJSON() {
+	public String obtenerAtributosJSON() {
 		String cadenaJson = "";
 
 		int index=0;

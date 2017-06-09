@@ -25,7 +25,7 @@ public class AtributoSimple extends Componedor {
 
 
 	
-	protected String obtenerAtributosJSON() {
+	public String obtenerAtributosJSON() {
 		String cadenaJson = "";
 	    cadenaJson ='"'+ nombre+ '"'+':' +valor;		
 		return cadenaJson;

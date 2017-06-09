@@ -20,7 +20,7 @@ public class AtributoClaseSimple extends Componedor {
 	}
 
 	@Override
-	protected String obtenerAtributosJSON() {
+	public String obtenerAtributosJSON() {
 		String cadenaJson = "";
 	    cadenaJson ='"'+ nombre+ '"';		
 		return cadenaJson;

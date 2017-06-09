@@ -6,7 +6,7 @@ public abstract class Componedor {
 
 	   public abstract void agregarHoja(Componedor composicion);
 	   
-	   protected abstract String obtenerAtributosJSON() ;
+	   public abstract String obtenerAtributosJSON() ;
 	   
 
 	   protected String getNombre(){return nombre;}

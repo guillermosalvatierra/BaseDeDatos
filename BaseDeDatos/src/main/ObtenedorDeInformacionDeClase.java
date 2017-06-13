@@ -4,23 +4,23 @@ import java.lang.reflect.Field;
 
 public class ObtenedorDeInformacionDeClase {
 
-	public Componedor traerInformacionDeAtributos(String nombreClase){
+	public Atributo traerInformacionDeAtributos(String nombreClase){
 
 		
-		Componedor ret =traerAtributos(nombreClase,nombreClase,nombreClase);
-		((AtributoCompuesto) ret).noEsHijo();
+		Atributo ret =traerAtributos(nombreClase,nombreClase,nombreClase,false);
 		return ret;
 	}
 
 	
-	public Componedor traerAtributos(String nombreClase, String pnombre, String ptipo) {
+	public Atributo traerAtributos(String nombreClase, String pnombre, String ptipo, boolean eshijo) {
 
-		Componedor ComponedorRet;
-		String tipoAtributo;
-		String nombreAtributo;
-		String ClaseAtributo;
+		Atributo atributoRet;
+		Atributo cp =null;
+		String tipoAtributo,nombreAtributo,claseAtributo;
+		
 		
 		Class<? extends Object> clase = null;
+		
 		try {			
 			clase = Class.forName(nombreClase);
 		} catch (ClassNotFoundException e1) {
@@ -30,38 +30,38 @@ public class ObtenedorDeInformacionDeClase {
 		Field[] atributos = clase.getDeclaredFields();
 
 	
-		ComponedorRet = new AtributoCompuesto(pnombre,ptipo);
+		atributoRet = new AtributoCompuesto(pnombre,ptipo,eshijo);			
 
+		
 		for (Field atr: atributos){
 
 			nombreAtributo = atr.getName();			
-			tipoAtributo   = atr.getType().getSimpleName();//atr.getType().toString();
-			ClaseAtributo =atr.getType().getTypeName();
-			Componedor cp = null;
+			tipoAtributo   = atr.getType().getSimpleName();
+			claseAtributo =atr.getType().getTypeName();
 			atr.setAccessible(true);			
+			cp = null;
 			
 			if (atr.getType().isPrimitive()){	
 				
-				cp=new AtributoClaseSimple(nombreAtributo,tipoAtributo);
+					cp=new AtributoSimpleClase(nombreAtributo,tipoAtributo);
 		
 			}else{
 				try {
-					
-//					Object valor = atr.get(c);
-//					tipoAtributo=valor.getClass().getTypeName().toString();
-			//		cp=traerInformacionDeAtributos(valor);
-					cp=traerAtributos(ClaseAtributo,nombreAtributo,tipoAtributo);
-
+					cp=traerAtributos(claseAtributo,nombreAtributo,tipoAtributo,true);
 				} catch (IllegalArgumentException e) {
 				e.printStackTrace();
 				}
 
 			}
-			ComponedorRet.agregarHoja(cp);
+			atributoRet.agregarHoja(cp);
 
 		}	
+		if (atributos.length==1 & cp instanceof AtributoSimpleClase){
+			atributoRet=cp;
+		}
+
 		
-		return ComponedorRet;
+		return atributoRet;
 	}
 	
 }

@@ -4,67 +4,65 @@ import java.lang.reflect.Field;
 
 public class ObtenedorDeInformacionDeObjeto {
 
-	public Componedor traerInformacionDeAtributos(Object o){
+	public Atributo traerInformacionDeAtributos(Object o){
 	
-		Class<? extends Object> clase = o.getClass();
-		Componedor ret=traerAtributos(o,clase.getName(),clase.getTypeName());
-		((AtributoCompuesto) ret).noEsHijo();
+		Atributo ret=traerAtributos(o,o.getClass().getSimpleName(),o.getClass().getSimpleName(),false);
 		return ret;
 	}
 
 	
-	private Componedor traerAtributos(Object o, String pnombre, String ptipo){
+	private Atributo traerAtributos(Object o, String pnombre, String ptipo,boolean eshijo ){
 
-		Componedor ComponedorRet;
-		String tipoAtributo;
-		String nombreAtributo;
+		Atributo atributoRet;
+		Atributo atrAux = null;
+		String tipoAtributo, nombreAtributo;
 		
 		Class<? extends Object> clase = o.getClass();
 		
-		Field[] atributos = clase.getDeclaredFields();
-
+		Field[] atributos = clase.getDeclaredFields();	
 	
-//		caux = new AtributoCompuesto(clase.getName(),clase.getTypeName());
-		ComponedorRet = new AtributoCompuesto(pnombre,ptipo);
+
+		atributoRet = new AtributoCompuesto(pnombre,ptipo, eshijo);			
 
 
 		for (Field atr: atributos){
 
 			nombreAtributo = atr.getName();
-//			tipoAtributo   = atr.getType().toString();
 			tipoAtributo   = atr.getType().getSimpleName();			
-			Componedor cp = null;
+			 atrAux = null;
 			atr.setAccessible(true);			
 			
 			if (atr.getType().isPrimitive()){	
 				
 				String sValor="";		
 				try {
-//					Object valor = atr.get(o);
 					sValor =atr.get(o).toString();
 				} catch (IllegalArgumentException | IllegalAccessException e) {
 				e.printStackTrace();
 				}
-				cp=new AtributoSimple(nombreAtributo,tipoAtributo,sValor);
+				atrAux=new AtributoSimpleObjeto(nombreAtributo,tipoAtributo,sValor);
 		
 			}else{
 				try {
 					Object valor = atr.get(o);
-//					tipoAtributo=valor.getClass().getTypeName().toString();
-			//		cp=traerInformacionDeAtributos(valor);
-					cp=traerAtributos(valor,nombreAtributo,tipoAtributo);
+					atrAux=traerAtributos(valor,nombreAtributo,tipoAtributo,true);
 
 				} catch (IllegalArgumentException | IllegalAccessException e) {
 				e.printStackTrace();
 				}
 
-			}
-			ComponedorRet.agregarHoja(cp);
-
-		}	
+			}		
+				atributoRet.agregarHoja(atrAux);	
+		}
+	
+		if (atributos.length==1 & atrAux instanceof AtributoSimpleObjeto){
+			atributoRet=atrAux;
+		}
 		
-		return ComponedorRet;
+		return atributoRet;
 	}
+	
+	
 	
 	public String mostrarNombreDeClase(Object cx){
 		

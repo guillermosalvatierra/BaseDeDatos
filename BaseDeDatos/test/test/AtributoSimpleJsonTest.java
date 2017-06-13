@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import main.AtributoSimple;
+import main.AtributoSimpleObjeto;
 
 public class AtributoSimpleJsonTest {
 
@@ -13,7 +13,7 @@ public class AtributoSimpleJsonTest {
 	@Test
 	public void ValidaJson() {
 		
-		AtributoSimple a=  new AtributoSimple("ValorEntero","int","1");
+		AtributoSimpleObjeto a=  new AtributoSimpleObjeto("ValorEntero","int","1");
 		
 		
 		assertFalse(a.obtenerAtributosJSON().isEmpty());

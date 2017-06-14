@@ -16,37 +16,31 @@ import main.ObtenedorDeInformacionDeObjeto;
 
 public class ObtenedorDeInformacionDeObjetoTest {
 
-	private C1 C1Test1=null;
-	private C2 C2Test2=null;
+	private C1 C1Test1=new C1(1,2);
+	private C2 C2Test2=new C2(true);
 	 
 	private ObtenedorDeInformacionDeObjeto obte1=new ObtenedorDeInformacionDeObjeto();
-	private List<String> VariablesTest=new ArrayList<String>();
+	
+	private Atributo atributoDeObtenedorC1Test= obte1.traerInformacionDeAtributos(C1Test1);
+	
+	private Atributo atributoDeObtenedorC2Test= obte1.traerInformacionDeAtributos(C2Test2);
+
+	
+
+
+	
 
 	@Test
-	public void ValidaObjetoConDosAtributos() {
-		C1Test1=new C1(1,2);
+	public void ValidaNombreObjetoConDosAtributos() {
 
-		Atributo a0 = new AtributoCompuesto("C1","C1",false);
-		a0.agregarHoja(new AtributoSimpleObjeto("C1variableEntero1", "int", "1"));
-		a0.agregarHoja(new AtributoSimpleObjeto("C1variableEntero2", "int", "2"));
-
-		
-		Atributo a= obte1.traerInformacionDeAtributos(C1Test1);
-		
-		
-		assertEquals(a0,a);
-	
+		assertEquals("C1variableEntero1",atributoDeObtenedorC1Test.getHijo(0).getNombre());
+		assertEquals("C1variableEntero2",atributoDeObtenedorC1Test.getHijo(1).getNombre());	
 	}
 
 	@Test
-	public void ValidaObjetoConUnAtributo() {
-		C2Test2=new C2(true);
+	public void ValidaNombreObjetoConUnAtributo() {
 
-		Atributo a0=new AtributoSimpleObjeto("C2variableBoolean", "boolean", "true");
-
-		Atributo a= obte1.traerInformacionDeAtributos(C2Test2);
-		
-		assertEquals(a0,a);
+		assertEquals(atributoDeObtenedorC2Test.getNombre(),"C2variableBoolean");
 	
 	}
 
@@ -54,63 +48,39 @@ public class ObtenedorDeInformacionDeObjetoTest {
 	
 	@Test
 	public void ValidaObjetoConDosAtributosEnteros() {		
-		C1Test1=new C1(1,2);
-
-		Atributo a0 = new AtributoCompuesto("C1","C1",false);
-		a0.agregarHoja(new AtributoSimpleObjeto("C1variableEntero1", "int", "1"));
-		a0.agregarHoja(new AtributoSimpleObjeto("C1variableEntero2", "int", "2"));
-
-		
-		Atributo a= obte1.traerInformacionDeAtributos(C1Test1);
 	
-		assertEquals(a0,a);
+		assertEquals("int",atributoDeObtenedorC1Test.getHijo(0).getTipo());
+		assertEquals("int",atributoDeObtenedorC1Test.getHijo(1).getTipo());	
 	
 	}
 
 	@Test
 	public void ValidaObjetoConUnAtributoBoolean() {
-		C2Test2=new C2(true);
 
-		Atributo a0=new AtributoSimpleObjeto("C2variableBoolean", "boolean", "true");
-
-		Atributo a= obte1.traerInformacionDeAtributos(C2Test2);
-		
-		assertEquals(a0,a);
+	
+		assertEquals("boolean",atributoDeObtenedorC2Test.getTipo());
 	
 	}
 
 	@Test
 	public void ValidaObjetoConDosValoresEnteros() {		
-		C1Test1=new C1(1,2);
-
-		Atributo a0 = new AtributoCompuesto("C1","C1",false);
-		a0.agregarHoja(new AtributoSimpleObjeto("C1variableEntero1", "int", "1"));
-		a0.agregarHoja(new AtributoSimpleObjeto("C1variableEntero2", "int", "2"));
-
-		
-		Atributo a= obte1.traerInformacionDeAtributos(C1Test1);
 	
-		assertEquals(a0,a);
+	
+		assertEquals("1",atributoDeObtenedorC1Test.getHijo(0).getValor());
+		assertEquals("2",atributoDeObtenedorC1Test.getHijo(1).getValor());	
 	
 	}
 
 	@Test
 	public void ValidaObjetoConUnaValorBoolean() {
-		C2Test2=new C2(true);
 
-		Atributo a0=new AtributoSimpleObjeto("C2variableBoolean", "boolean", "true");
 
-		Atributo a= obte1.traerInformacionDeAtributos(C2Test2);
-		
-		assertEquals(a0,a);
+		assertEquals("true",atributoDeObtenedorC2Test.getValor());
 	
 	}
 
 	@Test
 	public void ValidaObjetoPorNombreDeClase() {
-		C1Test1=new C1(1,2);
-		
-
 
 		assertEquals("C1",obte1.mostrarNombreDeClase(C1Test1));
 	

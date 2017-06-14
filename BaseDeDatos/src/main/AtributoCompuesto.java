@@ -19,7 +19,7 @@ public class AtributoCompuesto extends Atributo{
 	  }
 	  
 	@Override
-	public void agregarHoja(Atributo composicion) {
+	public void agregarHijo(Atributo composicion) {
 		hijo.add(composicion);
 	}
 	
@@ -34,6 +34,11 @@ public class AtributoCompuesto extends Atributo{
 		return covertirJson() ;
 	}
 
+
+	@Override
+	public Atributo getHijo(int index) {
+		return hijo.get(index);
+	}
 
 	
 	@Override
@@ -83,7 +88,7 @@ public class AtributoCompuesto extends Atributo{
 	
 	
 	@Override
-	protected String getValor() {
+	public String getValor() {
 		return toString();
 	}
 
@@ -106,6 +111,7 @@ public class AtributoCompuesto extends Atributo{
 			return false;
 		return true;
 	}
+
 
 
 

@@ -53,7 +53,7 @@ public class ObtenedorDeInformacionDeClase {
 				}
 
 			}
-			atributoRet.agregarHoja(cp);
+			atributoRet.agregarHijo(cp);
 
 		}	
 		if (atributos.length==1 & cp instanceof AtributoSimpleClase){

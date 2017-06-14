@@ -52,7 +52,7 @@ public class ObtenedorDeInformacionDeObjeto {
 				}
 
 			}		
-				atributoRet.agregarHoja(atrAux);	
+				atributoRet.agregarHijo(atrAux);	
 		}
 	
 		if (atributos.length==1 & atrAux instanceof AtributoSimpleObjeto){

@@ -31,8 +31,8 @@ public class ObtenedorDeInformacionDeClaseTest {
 		
 	
 		Atributo a0 = new AtributoCompuesto("main.C1","main.C1",false);
-		a0.agregarHoja(new AtributoSimpleClase("C1variableEntero1", "int"));
-		a0.agregarHoja(new AtributoSimpleClase("C1variableEntero2", "int"));
+		a0.agregarHijo(new AtributoSimpleClase("C1variableEntero1", "int"));
+		a0.agregarHijo(new AtributoSimpleClase("C1variableEntero2", "int"));
 
 		
 		Atributo a=  ClassInfo.traerInformacionDeAtributos("main.C1");;

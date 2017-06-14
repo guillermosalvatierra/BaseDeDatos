@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import main.AtributoSimpleObjeto;
 
-public class AtributoSimpleJsonTest {
+public class AtributoSimpleObjetoJsonTest {
 
 
 	@Test

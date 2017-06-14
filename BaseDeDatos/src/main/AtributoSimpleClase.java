@@ -10,7 +10,7 @@ public class AtributoSimpleClase extends Atributo {
 	}
 	
 	@Override
-	public void agregarHoja(Atributo composicion) {
+	public void agregarHijo(Atributo composicion) {
 	//no se usa
 	}
 	
@@ -26,7 +26,7 @@ public class AtributoSimpleClase extends Atributo {
 	}
 
 	@Override
-	protected String getValor() {
+	public String getValor() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -37,6 +37,12 @@ public class AtributoSimpleClase extends Atributo {
 		String cadenaJson = "";
 	    cadenaJson ='"'+ nombre+ '"';		
 		return cadenaJson;
+	}
+
+	@Override
+	public Atributo getHijo(int index) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

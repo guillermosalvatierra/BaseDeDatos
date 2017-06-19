@@ -52,9 +52,23 @@ public class AtributoCompuestoTest {
 	
 	}
 	
-	
+	@Test
+	public void CompruebaEquals(){
+		AtributoCompuesto a= new AtributoCompuesto("Objeto","o",false);
+		AtributoCompuesto b= new AtributoCompuesto("Objeto","o",false);
+		assertFalse(a.equals(b));
+		assertTrue(a.equals(a));
+	}
 		
+	@Test
+	public void NoEsHijo(){
+		AtributoCompuesto a= new AtributoCompuesto("Objeto","o",false);
+		assertFalse(a.noEsHijo());
+	}
 	
-	
-	
+	@Test	
+	public void GetValor(){
+		AtributoCompuesto a= new AtributoCompuesto("Objeto","o",false);
+		assertEquals(a.getValor(),null);
+	}
 }

@@ -9,12 +9,5 @@ public class C1 {
 		this.C1variableEntero1 = variable;
 		this.C1variableEntero2 = variable2;
 	}
-
-	@Override
-	public String toString() {
-		return  C1variableEntero1 + ", " + C1variableEntero2;
-	}
-	
-	
 	
 }

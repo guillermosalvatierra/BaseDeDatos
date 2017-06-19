@@ -51,7 +51,7 @@ public class ObtenedorDeInformacionDeClase {
 				atributoRet = cp;
 			}
 		} catch (ClassNotFoundException e1) {
-			e1.printStackTrace();
+			
 		}
 
 		return atributoRet;

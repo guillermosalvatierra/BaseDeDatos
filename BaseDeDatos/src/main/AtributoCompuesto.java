@@ -62,37 +62,6 @@ public class AtributoCompuesto extends Atributo{
 		return cadenaJson;
 	}
 
-	public List<String> getNombresDeAtributos(){
-		List<String> ret = new ArrayList<String>();
-		for (Atributo c:hijo){
-			ret.add(c.getNombre());
-		}
-		return ret;
-	}
-	
-	public List<String> getTiposDeAtributos(){
-		List<String> ret = new ArrayList<String>();
-		for (Atributo c:hijo){
-			ret.add(c.getTipo());
-		}
-		return ret;
-	}
-
-	public List<String> getValoresDeAtributos(){
-		List<String> ret = new ArrayList<String>();
-		for (Atributo c:hijo){
-			ret.add(c.getValor());
-		}
-		return ret;
-	}
-	
-	
-	@Override
-	public String getValor() {
-		return toString();
-	}
-
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -112,8 +81,8 @@ public class AtributoCompuesto extends Atributo{
 		return true;
 	}
 
-
-
-
-	
+	@Override
+	public String getValor() {
+		return null;
+	}
 }

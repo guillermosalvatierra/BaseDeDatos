@@ -13,11 +13,6 @@ public class AtributoSimpleClase extends Atributo {
 	public void agregarHijo(Atributo composicion) {
 	//no se usa
 	}
-	
-	@Override
-	public String toString() {
-		return "AtributoSimple [nombre=" + nombre + ", tipo=" + tipo + "]";
-	}
 
 	@Override
 	public String obtenerAtributosJSON() {

@@ -22,11 +22,6 @@ public class AtributoCompuesto extends Atributo{
 	public void agregarHijo(Atributo composicion) {
 		hijo.add(composicion);
 	}
-	
-	@Override
-	public String toString() {
-		return "Objeto [ nombre=" + nombre + ", tipo=" + tipo + ",atributos=" + hijo + "]";
-	}
 
 
 	public String obtenerAtributosJSON() {
@@ -68,17 +63,7 @@ public class AtributoCompuesto extends Atributo{
 			return true;
 		if (!super.equals(obj))
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		AtributoCompuesto other = (AtributoCompuesto) obj;
-		if (esHijo != other.esHijo)
-			return false;
-		if (hijo == null) {
-			if (other.hijo != null)
-				return false;
-		} else if (!hijo.equals(other.hijo))
-			return false;
-		return true;
+		return false;
 	}
 
 	@Override

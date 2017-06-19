@@ -83,7 +83,7 @@ public class ObtenedorDeInformacionDeClase {
 >>>>>>> origin/master
 			}
 		} catch (ClassNotFoundException e1) {
-			e1.printStackTrace();
+			
 		}
 
 <<<<<<< HEAD

@@ -12,13 +12,7 @@ public class AtributoSimpleObjeto  extends Atributo{
 	
 	@Override
 	public void agregarHijo(Atributo composicion) {
-		// TODO Auto-generated method stub		
 	}	
-	
-	@Override
-	public String toString() {
-		return "AtributoSimple [nombre=" + nombre + ", tipo=" + tipo + ", valor=" + valor + "]";
-	}
 	
 	@Override	
 	public String obtenerAtributosJSON() {
@@ -47,23 +41,11 @@ public class AtributoSimpleObjeto  extends Atributo{
 			return true;
 		if (!super.equals(obj))
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		AtributoSimpleObjeto other = (AtributoSimpleObjeto) obj;
-		if (valor == null) {
-			if (other.valor != null)
-				return false;
-		} else if (!valor.equals(other.valor))
-			return false;
-		return true;
+		return false;
 	}
 
 	@Override
 	public Atributo getHijo(int index) {
-		// TODO Auto-generated method stub
 		return null;
 	}
-	
-
-
 }

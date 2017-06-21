@@ -31,7 +31,6 @@ public class AtributoSimpleObjeto  extends Atributo{
 
 	@Override
 	public String getValor() {
-		// TODO Auto-generated method stub
 		return valor;
 	}
 

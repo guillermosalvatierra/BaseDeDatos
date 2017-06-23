@@ -5,18 +5,10 @@ import java.util.List;
 
 public class AtributoCompuesto extends Atributo{
 	   protected List<Atributo> hijo = new ArrayList<Atributo>();
-	   boolean esHijo=true;
 
-	  public AtributoCompuesto(String nombre, String tipo, boolean eshijo) {
-			this.nombre = nombre;
-			this.tipo = tipo;
-			this.esHijo=eshijo;
+	  public AtributoCompuesto(){
 	  }
 	  
-	  public boolean noEsHijo(){
-		  esHijo=false; 
-		  return esHijo;
-	  }
 	  
 	@Override
 	public void agregarHijo(Atributo composicion) {
@@ -25,7 +17,6 @@ public class AtributoCompuesto extends Atributo{
 
 
 	public String obtenerAtributosJSON() {
-
 		return covertirJson() ;
 	}
 
@@ -40,7 +31,6 @@ public class AtributoCompuesto extends Atributo{
 	protected String covertirJson() {
 		// TODO Auto-generated method stub
 		String cadenaJson = "";
-
 		int index=0;
 		for (Atributo c:hijo) {
 			
@@ -49,8 +39,8 @@ public class AtributoCompuesto extends Atributo{
 			cadenaJson=UtilidadesJson.encapsularAtributoConSeparador(cadenaJson, index, hijo.size());
 			index=index+1;
 		}
-		
-		if(esHijo)
+
+		if(nombre!=null)
 			cadenaJson='"'+nombre+'"'+':'+UtilidadesJson.encapsularCadenaJson(cadenaJson);
 		else 
 			cadenaJson=UtilidadesJson.encapsularCadenaJson(cadenaJson);	
@@ -70,4 +60,8 @@ public class AtributoCompuesto extends Atributo{
 	public String getValor() {
 		return null;
 	}
+
+
+	
+	
 }

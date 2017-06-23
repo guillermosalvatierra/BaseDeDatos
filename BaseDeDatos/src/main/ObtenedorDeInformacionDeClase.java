@@ -6,13 +6,14 @@ public class ObtenedorDeInformacionDeClase {
 
 	public Atributo traerInformacionDeAtributos(String nombreClase) {
 
-		Atributo ret = traerAtributos(nombreClase, nombreClase, nombreClase, false);
+		Atributo ret = traerAtributos(nombreClase);
 		return ret;
 	}
 
-	public Atributo traerAtributos(String nombreClase, String pnombre, String ptipo, boolean eshijo) {
+	public Atributo traerAtributos(String nombreClase) {
 
 		Atributo atributoR = null, atriAux = null;
+		AtributoCompuesto atrAux2 = null;
 		String tipoAtributo, nombreAtributo, claseAtributo;
 
 		Class<? extends Object> clase = null;
@@ -22,7 +23,7 @@ public class ObtenedorDeInformacionDeClase {
 
 			Field[] atributos = clase.getDeclaredFields();
 
-			Atributo atributoC = new AtributoCompuesto(pnombre, ptipo, eshijo);
+			Atributo atributoC = new AtributoCompuesto();
 
 			for (Field atr : atributos) {
 
@@ -33,25 +34,22 @@ public class ObtenedorDeInformacionDeClase {
 				atriAux = null;
 
 				if (atr.getType().isPrimitive()) {
-
 					atriAux = new AtributoSimpleClase(nombreAtributo, tipoAtributo);
-
 				} else {
-					try {
-						atriAux = traerAtributos(claseAtributo, nombreAtributo, tipoAtributo, true);
-					} catch (IllegalArgumentException e) {
-						e.printStackTrace();
-					}
-
+					atriAux=traerAtributos(claseAtributo);
+					//atriAux=new AtributoCompuesto(nombreAtributo,tipoAtributo);	
+					atriAux.setNombre(nombreAtributo);
+					atriAux.setTipo(tipoAtributo);
 				}
 				atributoC.agregarHijo(atriAux);
-
 			}
+			
 			if (atributos.length == 1 && atriAux instanceof AtributoSimpleClase) {
 				atributoR = atriAux;
 			} else {
 				atributoR = atributoC;
 			}
+			
 		} catch (ClassNotFoundException e1) {
 			e1.printStackTrace();
 		}

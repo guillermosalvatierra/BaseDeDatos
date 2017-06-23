@@ -6,58 +6,60 @@ public class ObtenedorDeInformacionDeObjeto {
 
 	public Atributo traerInformacionDeAtributos(Object o){
 
-		Atributo ret=traerAtributos(o,o.getClass().getSimpleName(),o.getClass().getSimpleName(),false);
+		Atributo ret=traerAtributos(o);
 		return ret;
 	}
 
 	
-	private Atributo traerAtributos(Object o, String pnombre, String ptipo,boolean eshijo ){
+	private Atributo traerAtributos(Object o ){
 
-		Atributo atributoC;
-		Atributo atributoR;
-		Atributo atrAux = null;
-		String tipoAtributo, nombreAtributo;
+		Atributo atributoR,atrAux;
 		
 		Class<? extends Object> clase = o.getClass();
 		
-		Field[] atributos = clase.getDeclaredFields();	
+		Field[] atributos = clase.getDeclaredFields();			
 		
-		atributoC = new AtributoCompuesto(pnombre,ptipo, eshijo);			
-		
-		for (Field atr: atributos){
+		if (atributos.length==1 && atributos[0].getType().isPrimitive()){
+			//atributoR=creaAtributoSimple(atributos[0], o);
+			atributoR=new AtributoSimpleObjeto(atributos[0].getType().getName(),atributos[0].getType().getSimpleName(),buscaObjeto(atributos[0],o).toString());
 
-			nombreAtributo = atr.getName();
-			tipoAtributo   = atr.getType().getSimpleName();			
-			atrAux = null;
-			atr.setAccessible(true);			
-			try {			
-				if (atr.getType().isPrimitive()){	
-				
-					String sValor="";		
-					sValor =atr.get(o).toString();
-					atrAux=new AtributoSimpleObjeto(nombreAtributo,tipoAtributo,sValor);
-		
-				}else{
-					Object valor = atr.get(o);
-					atrAux=traerAtributos(valor,nombreAtributo,tipoAtributo,true);
-				}			
-			} catch (IllegalArgumentException | IllegalAccessException e) {
-				e.printStackTrace();
-			}
-			atributoC.agregarHijo(atrAux);		
-		}
-		
-		if (atributos.length==1 & atrAux instanceof AtributoSimpleObjeto){
-			atributoR=atrAux;
 		}else{
-			atributoR=atributoC;			
-		}
-			
 		
+		atributoR = new AtributoCompuesto();
+
+		for (Field atr: atributos){
+			atr.setAccessible(true);			
+						
+				if (atr.getType().isPrimitive()){					
+					//atrAux=creaAtributoSimple(atributos[0], o);;
+					atrAux=new AtributoSimpleObjeto(atr.getType().getName(),atr.getType().getSimpleName(),buscaObjeto(atr,o).toString());
+				}else{
+					Object valor = null;
+					valor = buscaObjeto(atr,o);
+					atrAux=traerAtributos(valor);
+					atrAux.setNombre(atr.getName());
+					atrAux.setTipo(atr.getType().getSimpleName());
+				}			
+			
+			atributoR.agregarHijo(atrAux);		
+		}
+	
+		}	
 		return atributoR;
 	
 }	
 	
+	private Object buscaObjeto(Field atr, Object o){
+		Object a = null;
+		atr.setAccessible(true);			
+		try {
+			a = atr.get(o).toString();
+		} catch (IllegalArgumentException | IllegalAccessException e) {
+			e.printStackTrace();
+		}
+		return a;
+		
+	}
 	
 	public String mostrarNombreDeClase(Object cx){
 		

@@ -2,14 +2,11 @@ package test;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 import org.junit.Test;
 
 import main.Atributo;
-import main.AtributoCompuesto;
-import main.AtributoSimpleObjeto;
 import main.C1;
 import main.C2;
 import main.ObtenedorDeInformacionDeObjeto;
@@ -25,10 +22,31 @@ public class ObtenedorDeInformacionDeObjetoTest {
 	
 	private Atributo atributoDeObtenedorC2Test= obte1.traerInformacionDeAtributos(C2Test2);
 
+	@Test
+	public void ValidaObjetoPorNombreDeClase() {
+
+		assertEquals("C1",obte1.mostrarNombreDeClase(C1Test1));
+	
+	}	
 	
 
+	@Test
+	public void ValidaNULL() {
 
+		assertEquals( obte1.mostrarNombreDeClase(null),"El objeto no debe ser nulo");
 	
+	}	
+	
+	@Test
+	public void ValidaObjetoNULL() {
+
+		assertEquals( obte1.traerInformacionDeAtributos(null),null);
+	
+	}	
+
+
+
+
 
 	@Test
 	public void ValidaNombreObjetoConDosAtributos() {
@@ -40,7 +58,7 @@ public class ObtenedorDeInformacionDeObjetoTest {
 	@Test
 	public void ValidaNombreObjetoConUnAtributo() {
 
-		assertEquals(atributoDeObtenedorC2Test.getNombre(),"C2variableBoolean");
+		assertEquals("C2variableBoolean",atributoDeObtenedorC2Test.getHijo(0).getNombre());
 	
 	}
 
@@ -57,8 +75,9 @@ public class ObtenedorDeInformacionDeObjetoTest {
 	@Test
 	public void ValidaObjetoConUnAtributoBoolean() {
 
-		assertTrue(atributoDeObtenedorC2Test.getTipo().equals("boolean"));
-	
+	//	assertTrue(atributoDeObtenedorC2Test.getTipo().equals("boolean"));
+		assertEquals("boolean",atributoDeObtenedorC2Test.getHijo(0).getTipo());
+		
 	}
 
 	@Test
@@ -72,19 +91,12 @@ public class ObtenedorDeInformacionDeObjetoTest {
 
 	@Test
 	public void ValidaObjetoConUnaValorBoolean() {
+		assertEquals("true",atributoDeObtenedorC2Test.getHijo(0).getValor());
 
 
-		assertEquals("true",atributoDeObtenedorC2Test.getValor());
-	
 	}
 
-	@Test
-	public void ValidaObjetoPorNombreDeClase() {
 
-		assertEquals("C1",obte1.mostrarNombreDeClase(C1Test1));
-	
-	}	
-	
 	
 
 }

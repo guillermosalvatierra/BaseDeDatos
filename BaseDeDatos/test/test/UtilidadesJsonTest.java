@@ -27,4 +27,11 @@ public class UtilidadesJsonTest {
 		assertFalse(UtilidadesJson.esUltimaIteracion(4, 4));
 		assertTrue(UtilidadesJson.esUltimaIteracion(1, 2));
 	}
+	
+	@Test
+	public void creaUtilidadesJson(){
+		UtilidadesJson u=new UtilidadesJson();
+		boolean esUltimaIteracion = u.esUltimaIteracion(1, 2);
+		assertTrue(esUltimaIteracion);
+	}
 }

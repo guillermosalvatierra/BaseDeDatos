@@ -21,7 +21,7 @@ public class AtributoCompuestoTest {
 		a.agregarHijo(b);	
 
 		assertFalse(a.obtenerAtributosJSON().isEmpty());
-	
+		
 	}
 
 	@Test
@@ -60,8 +60,19 @@ public class AtributoCompuestoTest {
 		AtributoCompuesto b= new AtributoCompuesto();
 		b.setNombre("Objeto");
 		b.setTipo("o");
-		assertFalse(a.equals(b));
+		
+		assertTrue(a.equals(b));
 		assertTrue(a.equals(a));
+		assertFalse(a.equals(null));
+		assertFalse(a.equals(new String("Prueba")));
+		
+		
+		b.setTipo("o2");
+		assertFalse(a.equals(b));
+		
+		b.setNombre("Objeto2");
+		assertFalse(a.equals(b));
+
 	}
 		
 
@@ -73,5 +84,14 @@ public class AtributoCompuestoTest {
 		a.setTipo("o");
 
 		assertEquals(a.getValor(),null);
+	}
+	
+	@Test
+	public void ValidaJsonAtributoCompuestoConNombre() {
+		Atributo b = new AtributoSimpleObjeto("VariableInt","int","1");
+		a.agregarHijo(b);	
+		a.setNombre("ValidaConNombre");
+		assertFalse(a.obtenerAtributosJSON().isEmpty());
+		
 	}
 }

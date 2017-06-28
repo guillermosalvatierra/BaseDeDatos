@@ -34,15 +34,28 @@ public class AtributoSimpleObjeto  extends Atributo{
 		return valor;
 	}
 
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (!super.equals(obj))
+		if (obj == null)
 			return false;
-		return false;
-	}
+		if (getClass() != obj.getClass())
+			return false;
+		AtributoSimpleObjeto other = (AtributoSimpleObjeto) obj;
+		if (!nombre.equals(other.nombre))
+			return false;
+		if (!tipo.equals(other.tipo))
+			return false;
+		if (!valor.equals(other.valor))
+			return false;
 
+		return true;
+	}
+	
+	
+	
 	@Override
 	public Atributo getHijo(int index) {
 		return null;

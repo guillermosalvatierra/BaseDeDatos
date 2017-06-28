@@ -2,19 +2,11 @@ package test;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import org.junit.Test;
 
 import main.Atributo;
-import main.AtributoCompuesto;
-import main.AtributoSimpleClase;
-import main.AtributoSimpleObjeto;
-import main.C1;
-import main.C2;
 import main.ObtenedorDeInformacionDeClase;
-import main.ObtenedorDeInformacionDeObjeto;
 
 
 public class ObtenedorDeInformacionDeClaseTest {
@@ -22,9 +14,10 @@ public class ObtenedorDeInformacionDeClaseTest {
 
 	private ObtenedorDeInformacionDeClase obte1=new ObtenedorDeInformacionDeClase();
 	
-	private Atributo atributoDeObtenedorC1Test= obte1.traerInformacionDeAtributos("main.C1");
+	private Atributo atributoDeObtenedorC1Test= obte1.traerAtributos("main.C1");
 	
-	private Atributo atributoDeObtenedorC2Test= obte1.traerInformacionDeAtributos("main.C2");
+	private Atributo atributoDeObtenedorC2Test= obte1.traerAtributos("main.C2");
+
 
 	
 	
@@ -39,7 +32,8 @@ public class ObtenedorDeInformacionDeClaseTest {
 
 	@Test
 	public void ValidaObjetoConUnAtributo() {
-
+		assertEquals("C2variableBoolean",atributoDeObtenedorC2Test.getHijo(0).getNombre());
+		
 		//assertEquals(atributoDeObtenedorC2Test.getHijo(0).getNombre(),"C2variableBoolean");
 			
 	
@@ -59,10 +53,19 @@ public class ObtenedorDeInformacionDeClaseTest {
 	@Test
 	public void ValidaObjetoConUnAtributoBoolean() {
 		
-		//assertEquals("boolean",atributoDeObtenedorC2Test.getHijo(0).getTipo());
+		assertEquals("boolean",atributoDeObtenedorC2Test.getHijo(0).getTipo());
 		
 			
 	}
+
+	@Test
+	public void ValidaClaseNoExiste() {
+		
+		assertTrue(obte1.traerAtributos("main.NoExiste")==null);
+		
+			
+	}
+
 
 
 }

@@ -7,7 +7,6 @@ import org.junit.Test;
 
 import main.Atributo;
 import main.AtributoSimpleClase;
-import main.AtributoSimpleObjeto;
 
 public class AtributoSimpleClaseTest2 {
 
@@ -44,6 +43,28 @@ public class AtributoSimpleClaseTest2 {
 		assertEquals(b.getTipo(),"int");
 
 	
+	}
+	
+	@Test
+	public void CompruebaGethijo(){
+		AtributoSimpleClase a1= new AtributoSimpleClase("VariableInt","int");
+
+		assertEquals(a1.getHijo(0),null);
+	}
+
+	@Test
+	public void CompruebaValorNulo(){
+		AtributoSimpleClase a1= new AtributoSimpleClase("VariableInt","int");
+
+		assertEquals(a1.getValor(),null);
+	}
+	
+	@Test
+	public void AgregarHijo(){
+		AtributoSimpleClase a1= new AtributoSimpleClase("VariableInt","int");
+		AtributoSimpleClase a2= new AtributoSimpleClase("VariableInt","int");
+		a1.agregarHijo(a2);
+		assertEquals(a1,a1);
 	}
 	
 	

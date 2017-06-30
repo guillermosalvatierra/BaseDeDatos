@@ -47,15 +47,6 @@ public class AtributoCompuesto extends Atributo{
 		return cadenaJson;
 	}
 
-/*	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!super.equals(obj))
-			return false;
-		return false;
-	}
-*/	
 	
 	@Override
 	public boolean equals(Object obj) {
@@ -67,15 +58,9 @@ public class AtributoCompuesto extends Atributo{
 			return false;
 
 		AtributoCompuesto other = (AtributoCompuesto) obj;
-		/*if (nombre == null) {
-			if (other.nombre != null)
-				return false;
-		} else*/ if (!nombre.equals(other.nombre))
+		if (!nombre.equals(other.nombre))
 			return false;
-		/*if (tipo == null) {
-			if (other.tipo != null)
-				return false;
-		} else*/ if (!tipo.equals(other.tipo))
+		if (!tipo.equals(other.tipo))
 			return false;
 		
 		return true;

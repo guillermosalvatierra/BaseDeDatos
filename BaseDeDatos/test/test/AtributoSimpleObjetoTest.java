@@ -5,92 +5,77 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import main.Atributo;
 import main.AtributoSimpleObjeto;
 import main.C1;
 
 public class AtributoSimpleObjetoTest {
 
+	AtributoSimpleObjeto atrSimpleInt=  new AtributoSimpleObjeto("VariableInt","int","1");
+	AtributoSimpleObjeto atrSimpleInt2= new AtributoSimpleObjeto("VariableInt","int","1");
+	AtributoSimpleObjeto atrSimpleBool = new AtributoSimpleObjeto("VariableBolean","boolean","true");
+
 
 	@Test
 	public void ValidaJson() {
 		
-		AtributoSimpleObjeto a=  new AtributoSimpleObjeto("ValorEntero","int","1");
-		
-		
-		assertFalse(a.obtenerAtributosJSON().isEmpty());
+		assertFalse(atrSimpleInt.obtenerAtributosJSON().isEmpty());
 	
 	}
-
 	
 	@Test
 	public void ValidaUnAtributoBoolean() {
-
-		AtributoSimpleObjeto b = new AtributoSimpleObjeto("VariableBolean","boolean","true");
-	
-
-		assertEquals(b.getNombre(),"VariableBolean");
-		assertEquals(b.getTipo(),"boolean");
-		assertEquals(b.getValor(),"true");
+		assertEquals(atrSimpleBool.getNombre(),"VariableBolean");
+		assertEquals(atrSimpleBool.getTipo(),"boolean");
+		assertEquals(atrSimpleBool.getValor(),"true");
 	
 	}
 	
 	@Test
 	public void ValidaUnAtributoInt() {
 
-		Atributo b = new AtributoSimpleObjeto("VariableInt","int","1");
-	
-
-		assertEquals(b.getNombre(),"VariableInt");
-		assertEquals(b.getTipo(),"int");
-		assertEquals(b.getValor(),"1");
+		assertEquals(atrSimpleInt.getNombre(),"VariableInt");
+		assertEquals(atrSimpleInt.getTipo(),"int");
+		assertEquals(atrSimpleInt.getValor(),"1");
 	
 	}
+
 
 	@Test
-	public void ValidaDosAtributoInt() {
+	public void CompruebaGethijo(){
 
-		Atributo b = new AtributoSimpleObjeto("VariableInt","int","1");
-		Atributo c = new AtributoSimpleObjeto("VariableInt","int","1");
-			
-
-		assertEquals(b,c);
-	
-	
+		assertEquals(atrSimpleInt.getHijo(0),null);
 	}
+
 	
 	@Test
 	public void CompruebaEquals(){
-		AtributoSimpleObjeto a= new AtributoSimpleObjeto("VariableInt","int","1");
-		AtributoSimpleObjeto b= new AtributoSimpleObjeto("VariableInt","int","1");
-		AtributoSimpleObjeto c= new AtributoSimpleObjeto("VariableInt","int","2");
 	
-
+		assertTrue(atrSimpleInt.equals(atrSimpleInt2));
 		
-		assertTrue(a.equals(b));
-		assertTrue(a.equals(a));
-		assertFalse(a.equals(c));
+		assertTrue(atrSimpleInt.equals(atrSimpleInt));
+	
+		assertFalse(atrSimpleInt.equals(atrSimpleBool));
 		
-		b.setTipo("int2");
-		assertFalse(a.equals(b));
-		b.setNombre("int2");		
-		assertFalse(a.equals(b));
+		assertFalse(atrSimpleInt.equals(null));
 		
-		assertFalse(a.equals(null));
-		
-		assertFalse(a.equals(new C1(2,2)));
+		assertFalse(atrSimpleInt.equals(new C1(2,2)));
 		
 	}
 	
-	
-		
 	@Test
-	public void CompruebaGethijo(){
-		AtributoSimpleObjeto a1= new AtributoSimpleObjeto("VariableInt","int","1");
+	public void CompruebaEqualsNombreDistinto(){
+		atrSimpleInt2.setNombre("int2");		
+		assertFalse(atrSimpleInt.equals(atrSimpleInt2));
 
-		assertEquals(a1.getHijo(0),null);
 	}
-	
+
+	@Test
+	public void CompruebaEqualsTipoDistinto(){
+		atrSimpleInt2.setTipo("int2");
+		assertFalse(atrSimpleInt.equals(atrSimpleInt2));
+
+	}
+
 	@Test
 	public void AgregarHijo(){
 		AtributoSimpleObjeto a1= new AtributoSimpleObjeto("VariableInt","int","1");

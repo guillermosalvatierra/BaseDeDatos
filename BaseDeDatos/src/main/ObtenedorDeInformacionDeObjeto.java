@@ -6,11 +6,10 @@ public class ObtenedorDeInformacionDeObjeto {
 
 
 	
-	public Atributo traerInformacionDeAtributos(Object o ){
+	public Atributo traerInformacionDeAtributos( Object o ){
 
-	//	boolean tieneAtributo=false;
-	//	int atributoPrimitivo=0;
-		Atributo atributoR,atrAux = null;
+		Atributo atributoR = null,atrAux = null;
+		
 		if(o==null ){
 			return null;
 		}
@@ -19,47 +18,34 @@ public class ObtenedorDeInformacionDeObjeto {
 		
 		Field[] atributos = clase.getDeclaredFields();			
 
-		
-	//	if (atributos.length==1 && atributos[0].getType().isPrimitive()){
-			//atributoR=creaAtributoSimple(atributos[0], o);
-	//		return new AtributoSimpleObjeto(atributos[0].getName(),atributos[0].getType().getSimpleName(),buscaObjeto(atributos[0],o).toString());
-			
-	//	}else{
-		
 		atributoR = new AtributoCompuesto();
 
 		for (Field atr: atributos){
 			atr.setAccessible(true);
-//			tieneAtributo=true;
-			atrAux=null;
-						
-//				if (atr.getType().isPrimitive()){
-//				}
+			if (atr.getType().isPrimitive()){			
 				atrAux=new AtributoSimpleObjeto(atr.getName(),atr.getType().getSimpleName(),buscaObjeto(atr,o).toString());
-				/*}else{
-					Object valor = null;
-					valor = buscaObjeto(atr,o);
-					atrAux=traerInformacionDeAtributos(valor);
-					atrAux.setNombre(atr.getName());
-					atrAux.setTipo(atr.getType().getSimpleName());
-				*/
-				//}			
-			
-			atributoR.agregarHijo(atrAux);		
+			}else{
+				atrAux=traerInformacionDeAtributos(buscaObjeto(atr,o));
+				atrAux.setNombre(atr.getName());
+				atrAux.setTipo(atr.getType().getSimpleName());
 
 			}
-	
-//			if(atributoPrimitivo>=1)
-				return atributoR;
 
-//		return atributoR;
+//			if(atrAux!=null ){
+				atributoR.agregarHijo(atrAux);		
+//			}
+
+		}
+	
+		return atributoR;
+
 }	
 	
 	private Object buscaObjeto(Field atr, Object o){
 		Object a = null;
 		atr.setAccessible(true);			
 		try {
-			a = atr.get(o).toString();
+			a = atr.get(o);
 		} catch (IllegalArgumentException | IllegalAccessException e) {
 			e.printStackTrace();
 	
@@ -78,4 +64,42 @@ public class ObtenedorDeInformacionDeObjeto {
 
 	}
 
+	/*
+		public Atributo traerInformacionDeAtributos(Object o ){
+
+		Atributo atributoR,atrAux = null;
+		if(o==null ){
+			return null;
+		}
+		
+		Class<? extends Object> clase = o.getClass();
+		
+		Field[] atributos = clase.getDeclaredFields();			
+
+		atributoR = new AtributoCompuesto();
+
+		for (Field atr: atributos){
+			atr.setAccessible(true);
+						
+//				if (atr.getType().isPrimitive()){
+//				}
+				atrAux=new AtributoSimpleObjeto(atr.getName(),atr.getType().getSimpleName(),buscaObjeto(atr,o).toString());
+				}else{
+					Object valor = null;
+					valor = buscaObjeto(atr,o);
+					atrAux=traerInformacionDeAtributos(valor);
+					atrAux.setNombre(atr.getName());
+					atrAux.setTipo(atr.getType().getSimpleName());
+				
+				//}			
+			
+			atributoR.agregarHijo(atrAux);		
+
+			}
+	
+			return atributoR;
+
+}	
+*/
+	
 }

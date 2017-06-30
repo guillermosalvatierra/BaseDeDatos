@@ -12,86 +12,89 @@ import main.Atributo;
 public class AtributoCompuestoTest {
 	int Atrib1=0,Atrib2=1;
 	
-	AtributoCompuesto a= new AtributoCompuesto();
+	AtributoCompuesto atriCompuesto1= new AtributoCompuesto();
+	AtributoCompuesto atriCompuesto2= new AtributoCompuesto();
+	Atributo b = new AtributoSimpleObjeto("VariableInt","int","1");
+	Atributo c = new AtributoSimpleObjeto("VariableInt","int","2");
+	Atributo d = new AtributoSimpleObjeto("VariableBolean","boolean","true");
 	
 	
 	@Test
 	public void ValidaJsonAtributoCompuesto() {
-		Atributo b = new AtributoSimpleObjeto("VariableInt","int","1");
-		a.agregarHijo(b);	
-
-		assertFalse(a.obtenerAtributosJSON().isEmpty());
-		
+		atriCompuesto1.agregarHijo(b);	
+		assertFalse(atriCompuesto1.obtenerAtributosJSON().isEmpty());
 	}
 
 	@Test
 	public void ValidaDosAtributosInt() {
-
-		Atributo b = new AtributoSimpleObjeto("VariableInt","int","1");
-		Atributo c = new AtributoSimpleObjeto("VariableInt","int","2");
-		a.agregarHijo(b);
-		a.agregarHijo(c);
-
-		
-
-		assertTrue(a.getHijo(Atrib1).equals(b));
-		assertTrue(a.getHijo(Atrib2).equals(c));
-	
+		atriCompuesto1.agregarHijo(b);
+		atriCompuesto1.agregarHijo(c);
+		assertTrue(atriCompuesto1.getHijo(Atrib1).equals(b));
+		assertTrue(atriCompuesto1.getHijo(Atrib2).equals(c));
 	}
 	
 
 	@Test
 	public void ValidaUnAtributosBoolean() {
-
-		Atributo b = new AtributoSimpleObjeto("VariableBolean","boolean","true");
-	
-		a.agregarHijo(b);
-	
-
-		assertTrue(a.getHijo(Atrib1).equals(b));
-	
+		atriCompuesto1.agregarHijo(d);
+		assertTrue(atriCompuesto1.getHijo(Atrib1).equals(d));
 	}
 	
 	@Test
-	public void CompruebaEquals(){
-		AtributoCompuesto a= new AtributoCompuesto();
-		a.setNombre("Objeto");
-		a.setTipo("o");
-		AtributoCompuesto b= new AtributoCompuesto();
-		b.setNombre("Objeto");
-		b.setTipo("o");
+	public void CompruebaAtributoEquals(){
+		atriCompuesto1.setNombre("Objeto");
+		atriCompuesto1.setTipo("o");
+	
+		atriCompuesto2.setNombre("Objeto");
+		atriCompuesto2.setTipo("o");
 		
-		assertTrue(a.equals(b));
-		assertTrue(a.equals(a));
-		assertFalse(a.equals(null));
-		assertFalse(a.equals(new String("Prueba")));
+		assertTrue(atriCompuesto1.equals(atriCompuesto1));
+
+		assertTrue(atriCompuesto1.equals(atriCompuesto2));
+
+		assertFalse(atriCompuesto1.equals(null));
+		
+		assertFalse(atriCompuesto1.equals(new String("Prueba")));
 		
 		
-		b.setTipo("o2");
-		assertFalse(a.equals(b));
-		
-		b.setNombre("Objeto2");
-		assertFalse(a.equals(b));
+
 
 	}
 		
+	@Test
+	public void CompruebaNombreAtributoEquals(){
+		atriCompuesto1.setNombre("Objeto");
+		atriCompuesto1.setTipo("o");
+		
+		atriCompuesto2.setNombre("Objeto2");
+		atriCompuesto2.setTipo("o");
+
+		assertFalse(atriCompuesto1.equals(atriCompuesto2));		
+	}
+
+	@Test
+	public void CompruebaTipoAtributoEquals(){
+		atriCompuesto1.setNombre("Objeto");
+		atriCompuesto1.setTipo("o");
+
+		atriCompuesto2.setNombre("Objeto2");
+		atriCompuesto2.setTipo("o");
+
+		assertFalse(atriCompuesto1.equals(atriCompuesto2));		
+	}
 
 	
 	@Test	
-	public void GetValor(){
-		AtributoCompuesto a= new AtributoCompuesto();
-		a.setNombre("Objeto");
-		a.setTipo("o");
+	public void ValidaValorNulo(){
 
-		assertEquals(a.getValor(),null);
+		assertEquals(atriCompuesto1.getValor(),null);
 	}
 	
 	@Test
 	public void ValidaJsonAtributoCompuestoConNombre() {
-		Atributo b = new AtributoSimpleObjeto("VariableInt","int","1");
-		a.agregarHijo(b);	
-		a.setNombre("ValidaConNombre");
-		assertFalse(a.obtenerAtributosJSON().isEmpty());
+
+		atriCompuesto1.setNombre("ValidaConNombre");
+		assertFalse(atriCompuesto1.obtenerAtributosJSON().isEmpty());
 		
 	}
 }

@@ -8,14 +8,13 @@ import org.junit.Test;
 import main.Atributo;
 import main.AtributoSimpleClase;
 
-public class AtributoSimpleClaseTest2 {
+public class AtributoSimpleClaseTest {
 
 
 	@Test
 	public void ValidaJson() {
 		
 		AtributoSimpleClase a=  new AtributoSimpleClase("ValorEntero","int");
-		
 		
 		assertFalse(a.obtenerAtributosJSON().isEmpty());
 	
@@ -26,7 +25,6 @@ public class AtributoSimpleClaseTest2 {
 	public void ValidaUnAtributoBoolean() {
 
 		Atributo b = new AtributoSimpleClase("VariableBolean","boolean");
-	
 
 		assertEquals(b.getNombre(),"VariableBolean");
 		assertEquals(b.getTipo(),"boolean");
@@ -38,11 +36,9 @@ public class AtributoSimpleClaseTest2 {
 
 		Atributo b = new AtributoSimpleClase("VariableInt","int");
 	
-
 		assertEquals(b.getNombre(),"VariableInt");
 		assertEquals(b.getTipo(),"int");
 
-	
 	}
 	
 	@Test

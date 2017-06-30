@@ -14,9 +14,9 @@ public class ObtenedorDeInformacionDeClaseTest {
 
 	private ObtenedorDeInformacionDeClase obte1=new ObtenedorDeInformacionDeClase();
 	
-	private Atributo atributoDeObtenedorC1Test= obte1.traerAtributos("main.C1");
+	private Atributo atributoDeObtenedorC1Test= obte1.traerInformacionDeAtributos("main.C1");
 	
-	private Atributo atributoDeObtenedorC2Test= obte1.traerAtributos("main.C2");
+	private Atributo atributoDeObtenedorC2Test= obte1.traerInformacionDeAtributos("main.C2");
 
 
 	
@@ -61,7 +61,7 @@ public class ObtenedorDeInformacionDeClaseTest {
 	@Test
 	public void ValidaClaseNoExiste() {
 		
-		assertTrue(obte1.traerAtributos("main.NoExiste")==null);
+		assertTrue(obte1.traerInformacionDeAtributos("main.NoExiste")==null);
 		
 			
 	}
